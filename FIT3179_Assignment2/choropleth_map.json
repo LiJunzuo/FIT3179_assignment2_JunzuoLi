@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Number of Christians in Different Countries",
+    "title": "Number of Christians by Country",
     "width": 800,
     "height": 400,
     "projection": {"type": "equalEarth"},
@@ -13,29 +13,52 @@
         "lookup": "properties.NAME",
         "from": {
           "data": {
-            "values": {
-              "country": ["Australia", "Brazil", "Canada", "India", "USA", "Mexico", "Philippines", "Russia", "Nigeria", "China", "Germany", "UK", "France", "South Korea", "Italy"],
-              "christians": [15000000, 123000000, 22000000, 28000000, 230000000, 96000000, 86000000, 105000000, 80000000, 40000000, 48000000, 41000000, 36000000, 15000000, 44000000]
-            }
+            "values": [
+              {"country": "United States of America", "christians": 93000000},
+              {"country": "Brazil", "christians": 75000000},
+    {"country": "Mexico", "christians": 10000000},
+    {"country": "Russia", "christians": 95000000},
+    {"country": "Philippines", "christians": 93000000},
+    {"country": "Nigeria", "christians": 90000000},
+    {"country": "China", "christians": 7000000},
+    {"country": "Democratic Republic of the Congo", "christians": 72000000},
+    {"country": "Germany", "christians": 58000000},
+    {"country": "United Kingdom", "christians": 51000000},
+    {"country": "France", "christians": 40000000},
+    {"country": "South Africa", "christians": 39000000},
+    {"country": "Italy", "christians": 39000000},
+    {"country": "Australia", "christians": 16000000},
+    {"country": "Canada", "christians": 22000000},
+    {"country": "Spain", "christians": 34000000},
+    {"country": "Argentina", "christians": 31000000},
+    {"country": "Ukraine", "christians": 33000000},
+    {"country": "India", "christians": 32000000},
+    {"country": "Kenya", "christians": 32000000},
+    {"country": "Poland", "christians": 33000000},
+    {"country": "Ethiopia", "christians": 52000000}
+            ]
           },
           "key": "country",
           "fields": ["christians"]
         }
-      }
+      },
+      {"calculate": "datum.christians + 0.1", "as": "Number of Christians"}
     ],
     "mark": {"type": "geoshape"},
     "encoding": {
       "color": {
-        "field": "christians",
+        "field": "Number of Christians",
         "type": "quantitative",
-        "title": "Number of Christians"
+        "title": "Number of Christians (in millions)",
+        "scale": {"type": "log"}
       },
       "tooltip": [
         {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-        {"field": "christians", "type": "quantitative", "title": "Number of Christians"}
+        {"field": "Number of Christians", "type": "quantitative"}
       ]
     }
   }
+  
   
   
   
