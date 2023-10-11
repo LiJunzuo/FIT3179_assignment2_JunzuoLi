@@ -1,0 +1,45 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Number of Christians in Different Countries",
+    "width": 800,
+    "height": 400,
+    "projection": {"type": "equalEarth"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/LiJunzuo/FIT3179_assignment2_JunzuoLi/main/FIT3179_Assignment2/FIT3179_data/ne_110m.json",
+      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
+    "transform": [
+      {
+        "lookup": "properties.NAME",
+        "from": {
+          "data": {
+            "values": {
+              "country": ["Australia", "Brazil", "Canada", "India", "USA", "Mexico", "Philippines", "Russia", "Nigeria", "China", "Germany", "UK", "France", "South Korea", "Italy"],
+              "christians": [15000000, 123000000, 22000000, 28000000, 230000000, 96000000, 86000000, 105000000, 80000000, 40000000, 48000000, 41000000, 36000000, 15000000, 44000000]
+            }
+          },
+          "key": "country",
+          "fields": ["christians"]
+        }
+      }
+    ],
+    "mark": {"type": "geoshape"},
+    "encoding": {
+      "color": {
+        "field": "christians",
+        "type": "quantitative",
+        "title": "Number of Christians"
+      },
+      "tooltip": [
+        {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+        {"field": "christians", "type": "quantitative", "title": "Number of Christians"}
+      ]
+    }
+  }
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number of Christians in Different Regions of the World</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+</head>
+<body>
+    <!-- Title and Introduction -->
+    <h1>Number of Christians in Different Regions of the World</h1>
+    <p>
+        Christianity, one of the world's major religions, has a vast number of followers spread across different regions. This visualization provides an insight into the distribution of Christians across various countries, and a comparison with Islam, the second-largest religion.
+    </p>
+
+    <!-- Choropleth Map -->
+    <h2>Christian Distribution by Country</h2>
+    <div id="choropleth_map"></div>
+
+    <!-- Pie Chart -->
+    <h2>Comparison of the Number of Christians and Islam, the Second Largest Religion in the World</h2>
+    <p>
+        While Christianity holds a significant presence worldwide, Islam, as the second-largest religion, also has a vast number of followers. This section offers a comparative view of the global numbers.
+    </p>
+    <div id="religion_pie_chart"></div>
+
+    <!-- Grouped Bar Chart -->
+    <h2>Comparison of the Number of Christians by Different Genders</h2>
+    <p>
+        Gender distribution among religious followers offers interesting insights. In this section, we explore the distribution of Christian followers across different geographical areas, segmented by gender.
+    </p>
+    <div id="gender_grouped_bar_chart"></div>
+
+    <!-- Vega-Lite Embed Scripts -->
+    <script type="text/javascript">
+        // Choropleth Map Vega-Lite specification
+        vegaEmbed('#choropleth_map', 'choropleth_map.json');
+
+        // Pie Chart Vega-Lite specification
+        vegaEmbed('#religion_pie_chart', 'religion_pie_chart.json');
+
+        // Grouped Bar Chart Vega-Lite specification
+        vegaEmbed('#gender_grouped_bar_chart', 'gender_grouped_bar_chart.json');
+    </script>
+</body>
+</html>

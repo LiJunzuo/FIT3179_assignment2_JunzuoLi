@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Christian Population by Geographical Area and Gender",
+  "data": {
+    "values": [
+      {"region": "North America", "gender": "Male", "population": 110000000},
+      {"region": "North America", "gender": "Female", "population": 120000000},
+      {"region": "Europe", "gender": "Male", "population": 220000000},
+      {"region": "Europe", "gender": "Female", "population": 230000000},
+      {"region": "Asia", "gender": "Male", "population": 60000000},
+      {"region": "Asia", "gender": "Female", "population": 65000000},
+      {"region": "Africa", "gender": "Male", "population": 250000000},
+      {"region": "Africa", "gender": "Female", "population": 255000000},
+      {"region": "Oceania", "gender": "Male", "population": 12000000},
+      {"region": "Oceania", "gender": "Female", "population": 13000000}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "region",
+      "type": "ordinal",
+      "axis": {"title": "Geographical Area"}
+    },
+    "y": {
+      "field": "population",
+      "type": "quantitative",
+      "axis": {"title": "Population"}
+    },
+    "color": {
+      "field": "gender",
+      "type": "nominal",
+      "legend": {"title": "Gender"}
+    },
+    "column": {"field": "gender", "type": "ordinal"},
+    "tooltip": [
+      {"field": "region", "type": "nominal"},
+      {"field": "gender", "type": "nominal"},
+      {"field": "population", "type": "quantitative", "title": "Population"}
+    ]
+  }
+}
+
+  
