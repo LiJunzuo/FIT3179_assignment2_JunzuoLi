@@ -35,7 +35,10 @@
     {"country": "India", "christians": 32490169},
     {"country": "Kenya", "christians": 32004274},
     {"country": "Poland", "christians": 33312650},
-    {"country": "Ethiopia", "christians": 52173011}
+    {"country": "Ethiopia", "christians": 52173011},
+    {"country": "Japan", "christians": 7102401},
+    {"country": "Bulgaria", "christians": 201452},
+    {"country": "Thailand", "christians": 328201}
             ]
           },
           "key": "country",
