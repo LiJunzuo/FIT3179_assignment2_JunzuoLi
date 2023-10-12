@@ -3,16 +3,16 @@
   "title": "Christian Population by Geographical Area and Gender",
   "data": {
     "values": [
-      {"region": "North America", "gender": "Male", "population": 110000000},
-      {"region": "North America", "gender": "Female", "population": 120000000},
-      {"region": "Europe", "gender": "Male", "population": 220000000},
-      {"region": "Europe", "gender": "Female", "population": 230000000},
-      {"region": "Asia", "gender": "Male", "population": 60000000},
-      {"region": "Asia", "gender": "Female", "population": 65000000},
-      {"region": "Africa", "gender": "Male", "population": 250000000},
-      {"region": "Africa", "gender": "Female", "population": 255000000},
-      {"region": "Oceania", "gender": "Male", "population": 12000000},
-      {"region": "Oceania", "gender": "Female", "population": 13000000}
+      {"region": "North America", "gender": "Male", "population": 111230504},
+      {"region": "North America", "gender": "Female", "population": 123002067},
+      {"region": "Europe", "gender": "Male", "population": 222025660},
+      {"region": "Europe", "gender": "Female", "population": 230609900},
+      {"region": "Asia", "gender": "Male", "population": 80200423},
+      {"region": "Asia", "gender": "Female", "population": 65130232},
+      {"region": "Africa", "gender": "Male", "population": 100151241},
+      {"region": "Africa", "gender": "Female", "population": 155770414},
+      {"region": "Oceania", "gender": "Male", "population": 12080470},
+      {"region": "Oceania", "gender": "Female", "population": 13111823}
     ]
   },
   "mark": "bar",
