@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number of Christians in Different Regions of the World</title>
+    <title>World Happiness Report - 2019</title>
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
@@ -12,77 +12,109 @@
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
-            background-color: #f9f9f9;
         }
 
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            text-shadow: 2px 2px #ecf0f1;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
+        h1,
         h2 {
-            color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            color: #2c3e50;
         }
 
         p {
-            font-size: 1.1em;
-            line-height: 1.6em;
-            color: #7f8c8d;
-            margin-bottom: 20px;
+            color: #34495e;
+            font-size: 16px;
+            margin-bottom: 30px;
         }
 
-        div {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        select {
+            margin-bottom: 20px;
         }
     </style>
 </head>
 
 <body>
     <!-- Title and Introduction -->
-    <h1>Number of Christians in Different Regions of the World</h1>
+    <h1>World Happiness Report - 2019</h1>
     <p>
-        Christianity, one of the world's major religions, has a vast number of followers spread across different regions. This visualization provides an insight into the distribution of Christians across various countries, and a comparison with Islam, the second-largest religion.
+        The World Happiness Report is a landmark survey of the state of global happiness. The report continues to gain global recognition as governments, organizations, and civil society increasingly use happiness indicators to inform their policy-making decisions. This visualization provides insights into the happiness scores and their determinants for the year 2019.
     </p>
 
     <!-- Choropleth Map -->
-    <h2>Christian Distribution by Country</h2>
+    <h2>Global Happiness Scores for 2019</h2>
+    <p>
+        The map visualization portrays the happiness scores of various countries in 2019. Happiness, while a subjective experience, can be quantified using various metrics such as GDP, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. The color gradient on the map provides a quick glance into countries with the highest and lowest happiness scores.
+    </p>
     <div id="choropleth_map"></div>
 
-    <!-- Pie Chart -->
-    <h2>Comparison of the Number of Christians and Islam, the Second Largest Religion in the World</h2>
+    <!-- Bar Chart -->
+    <h2>Top 20 Countries by Happiness Score</h2>
     <p>
-        While Christianity holds a significant presence worldwide, Islam, as the second-largest religion, also has a vast number of followers. This section offers a comparative view of the global numbers.
+        Delving deeper into specific nations, this bar chart showcases the top 20 countries based on their happiness scores. By visualizing these top-performing countries, we can gain insights into what factors might be contributing to their higher happiness ratings. Notably, most of these countries often score well in terms of social support, GDP per capita, and freedom.
     </p>
-    <div id="religion_pie_chart"></div>
+    <div id="bar_chart"></div>
 
-    <!-- Grouped Bar Chart -->
-    <h2>Comparison of the Number of Christians by Different Genders</h2>
+    <!-- Interactive Scatter Plot with Dropdown -->
+    <h2>Interactive Visualization of GDP vs. Happiness Score</h2>
     <p>
-        Gender distribution among religious followers offers interesting insights. In this section, we explore the distribution of Christian followers across different geographical areas, segmented by gender.
+        GDP has always been a significant factor when analyzing happiness. This section allows users to interactively explore the relationship between GDP per capita and happiness scores. The scatter plot provides a clear view of how countries compare in terms of economic output and perceived well-being. Additionally, users can switch between different visualizations to further explore the data.
     </p>
-    <div id="gender_grouped_bar_chart"></div>
+    <select id="visualization-dropdown">
+        <option value="scatter">Scatter Plot: GDP vs. Happiness Score</option>
+        <option value="bar">Bar Chart: Top 10 Countries by Happiness Score</option>
+        <option value="bubble">Bubble Chart: GDP vs. Happiness Score with Social Support and Corruption</option>
+    </select>
+    <div id="interactive_chart"></div>
+
+    <!-- Pie Chart -->
+    <h2>Distribution of Top Factors Contributing to Happiness</h2>
+    <p>
+        Happiness is multi-faceted, and while it's often challenging to pinpoint exactly what leads to it, several factors consistently influence its levels in populations. This pie chart breaks down the primary contributors to happiness scores, giving insight into which aspects of life hold the most weight in determining happiness across different nations.
+    </p>
+    <div id="pie_chart"></div>
+
+    <!-- Credits and Data Source -->
+    <hr>
+    <p>
+        Data Source: <a href="https://worldhappiness.report/" target="_blank">World Happiness Report</a>
+    </p>
 
     <!-- Vega-Lite Embed Scripts -->
     <script type="text/javascript">
         // Choropleth Map Vega-Lite specification
-        vegaEmbed('#choropleth_map', 'choropleth_map.json');
+        vegaEmbed('#choropleth_map', 'happiness_choropleth_map.json');
+
+        // Bar Chart Vega-Lite specification
+        vegaEmbed('#bar_chart', 'happiness_bar_chart.json');
 
         // Pie Chart Vega-Lite specification
-        vegaEmbed('#religion_pie_chart', 'religion_pie_chart.json');
+        vegaEmbed('#pie_chart', 'happiness_factors_pie_chart_2019.json');
 
-        // Grouped Bar Chart Vega-Lite specification
-        vegaEmbed('#gender_grouped_bar_chart', 'gender_grouped_bar_chart.json');
+        const dropdown = document.getElementById('visualization-dropdown');
+        const chartDiv = document.getElementById('interactive_chart');
+
+        function renderVisualization() {
+            switch (dropdown.value) {
+                case 'scatter':
+                    vegaEmbed(chartDiv, 'happiness_scatter_plot_2019.json');
+                    break;
+                case 'bar':
+                    vegaEmbed(chartDiv, 'happiness_bar_chart.json');
+                    break;
+                case 'bubble':
+                    vegaEmbed(chartDiv, 'happiness_bubble_chart_2019.json');
+                    break;
+            }
+        }
+
+        // Initial render
+        renderVisualization();
+
+        // Update visualization when dropdown value changes
+        dropdown.addEventListener('change', renderVisualization);
     </script>
+
 </body>
 
 </html>
+
+
 

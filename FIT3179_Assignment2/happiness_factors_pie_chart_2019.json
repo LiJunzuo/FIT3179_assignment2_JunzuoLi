@@ -1,0 +1,46 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Average Distribution of Top Factors Contributing to Happiness (2019)",
+    "data": {
+        "url": "https://raw.githubusercontent.com/LiJunzuo/FIT3179_assignment2_JunzuoLi/main/FIT3179_Assignment2/FIT3179_data/2019.csv"
+    },
+    "transform": [
+        {
+            "aggregate": [
+                {"op": "mean", "field": "GDP per capita", "as": "avg_GDP"},
+                {"op": "mean", "field": "Social support", "as": "avg_Social_support"},
+                {"op": "mean", "field": "Healthy life expectancy", "as": "avg_Healthy_life_expectancy"},
+                {"op": "mean", "field": "Freedom to make life choices", "as": "avg_Freedom"},
+                {"op": "mean", "field": "Generosity", "as": "avg_Generosity"},
+                {"op": "mean", "field": "Perceptions of corruption", "as": "avg_Corruption"}
+            ]
+        },
+        {
+            "fold": ["avg_GDP", "avg_Social_support", "avg_Healthy_life_expectancy", "avg_Freedom", "avg_Generosity", "avg_Corruption"]
+        }
+    ],
+    "mark": "arc",
+    "encoding": {
+        "theta": {
+            "field": "value",
+            "type": "quantitative",
+            "stack": true
+        },
+        "color": {
+            "field": "key",
+            "type": "nominal",
+            "legend": {
+                "title": "Factors"
+            },
+            "scale": {
+                "domain": ["avg_GDP", "avg_Social_support", "avg_Healthy_life_expectancy", "avg_Freedom", "avg_Generosity", "avg_Corruption"],
+                "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"]
+            }
+        },
+        "tooltip": [
+            {"field": "key", "type": "nominal", "title": "Factor"},
+            {"field": "value", "type": "quantitative", "title": "Average Value", "format": ".2f"}
+        ]
+    },
+    "view": {"stroke": null}
+}
