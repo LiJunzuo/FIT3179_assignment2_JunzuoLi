@@ -33,7 +33,7 @@
                 "title": "Factors"
             },
             "scale": {
-                "domain": ["avg GDP", "avg Social support", "avg Healthy life expectancy", "avg Freedom", "avg Generosity", "avg Corruption"],
+                "domain": ["avg_GDP", "avg_Social_support", "avg_Healthy_life_expectancy", "avg_Freedom", "avg_Generosity", "avg_Corruption"],
                 "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"]
             }
         },
